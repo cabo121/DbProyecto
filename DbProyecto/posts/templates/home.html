@@ -1,20 +1,60 @@
 {% extends 'Base.html' %}
 {% block content %}
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
 
 <div class="jumbotron p-4">
-    <h1 class="display-4"><strong>Armando Cabral Martinez 15131296</strong></h1>
+    <h1 class="titulo"><strong>Armando Cabral Martinez 15131296</strong></h1>
     <p class="lead">Esta es una pagina simple de prueba hecha en Django con una base de datos de un modelo</p>
-    <hr class="my-4">
+    <hr>
 
-    <img src="{ % static 'images/prueba2.jpg' % }">
     <br>
-    {% for posts in listado %}
 
-		{{ posts.personaje }}
-		{{ posts.descripcion }}
-		{{ posts.fecha }}
+    <h1>Super heroes Favoritos</h1>
+    <br>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <img src="{% static 'images/ironman.jpg' %}"
+                height="200" width="300">
+            </div>
+            <div class="col-md-4">
+                <img src="{% static 'images/spiderman.jpg' %}"
+                 height="200" width="300">
+            </div>
+            <div class="col-md-4">
+                <img src="{% static 'images/Superman.jpg' %}"
+                 height="200" width="300">
+            </div>    
+        </div>
+    </div>
 
-	{% endfor %}
+    <br>
+    <hr>
+    <br>
+
+    <div>
+        
+        <table class="table1">
+            <thead>
+                <tr>
+                    <th>Nombre del personaje</th>
+                    <th>Descripcion</th>
+                    <th>Superpoder</th>
+                </tr>
+            </thead>
+            {% for posts in listado %}
+            <tbody>
+                <td>{{ posts.personaje }}</td>
+                <td>{{ posts.descripcion }}</td>
+                <td>{{ posts.superpoder }}</td>
+            </tbody>
+            {% endfor %}
+        </table>
+        
+    </div>
+    
   </div>
 
 {% endblock content %}
